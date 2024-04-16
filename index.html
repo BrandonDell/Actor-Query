@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actor Query</title>
+    <script src="http://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <main>
+      <aside>
+        <!-- form -->
+        <div id="actor-search">
+          <h2>Search Actor</h2>
+          <form id="search-form" class="form-input w-30">
+            <input
+              id="search-input"
+              class="form-input w-100"
+              type="text"
+              placeholder="Search"
+            />
+            <button type="submit" class="submt"></button>
+          </form>
+        </div>
+        <!-- favorites -->
+        <section class="favorites"></section>
+      </aside>
 
-<script src="./assets/script.js"></script>
-</body>
+      <div id="actor-results">
+        <!-- actor Info -->
+        <section class="actor-info"></section>
+        <!-- movie list -->
+        <section class="movie-list"></section>
+      </div>
+    </main>
+    <!-- footer -->
+    <footer>
+      <h3>Made from Raw Coders</h3>
+      <p>&copy; 2024 Raw Coders UCF Coding Bootcamp</p>
+    </footer>
+    <script src="./assets/script.js"></script>
+  </body>
 </html>
