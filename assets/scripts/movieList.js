@@ -1,7 +1,12 @@
 const movieList = document.getElementById('movie-list')
 const actorString = 'harrison ford'
 let movieID = 'tt4154796'
-let actorID = ''
+let actorData = {
+    actorId:{},
+    actorAwards:{},
+    actorMovies:{}
+};
+let movieData = {}
 
 
 
@@ -13,29 +18,43 @@ const actorOptions = {
     }
 };
 
-const actorIDUrl = `https://moviesminidatabase.p.rapidapi.com/actor/imdb_id_byName/${actorString}/`;
-const fetchActorID = function () {
+const fetchActorId = function () {
+    const actorIDUrl = `https://moviesminidatabase.p.rapidapi.com/actor/imdb_id_byName/${actorString}/`;
     fetch(actorIDUrl, actorOptions)
         .then(function (response) {
             if (response.ok) {
                 response.json()
                     .then(function (data) {
-                        console.log(data);
-                        getActorAPI(data.results[0].imdb_id)
-                        
-                    })
+                        actorData.actorId = data.results[0].imdb_id
+                        fetchActorAwards(data.results[0].imdb_id)
+                    });
             }
         })
 }
 
-const getActorAPI = function (actorID) {
-    const actorAwardsUrl = `https://moviesminidatabase.p.rapidapi.com/actor/id/${actorID}/awards/`;
+const fetchActorAwards = function (actorId) {
+    const actorAwardsUrl = `https://moviesminidatabase.p.rapidapi.com/actor/id/${actorId}/awards/`;
     fetch(actorAwardsUrl, actorOptions)
         .then(function (response) {
             if (response.ok) {
                 response.json()
                     .then(function (data) {
-                        console.log(data);
+                        actorData.actorAwards = data
+                        fetchActorMovies(actorId)
+                    })
+            }
+        })
+}
+
+const fetchActorMovies = function(){
+    const actorMoviesUrl = 'https://moviesminidatabase.p.rapidapi.com/movie/byActor/nm0000148/';
+    fetch(actorMoviesUrl, actorOptions)
+        .then(function (response) {
+            if (response.ok) {
+                response.json()
+                    .then(function (data) {
+                        actorData.actorMovies = data
+                        console.log(actorData)
                     })
             }
         })
@@ -61,8 +80,7 @@ const getMovieAPI = function () {
             if (response.ok) {
                 response.json()
                     .then(function (data) {
-                        // console.log(data);
-                        // printMovie(data)
+                        
                     })
             }
         })
@@ -72,6 +90,7 @@ const printMovie = function (data) {
 
 }
 
-fetchActorID()
-// getActorAPI()
-// getMovieAPI()
+fetchActorId()
+
+
+
