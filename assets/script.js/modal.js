@@ -47,7 +47,7 @@ const displayMovieInModal = function(movieData, actorData) {
     modalActor.textContent = actorData.results[0].actor[0].name;
     modalAwards.textContent = actorData.results[0].award;
 
-    
+    modal.style.display = 'hidden';
 };
 
 const openModal = function(){
