@@ -40,14 +40,46 @@
         <!-- movie list -->
         <section id="movie-list"></section>
       </div>
-     
-    </main>
-    <!-- footer -->
-    <footer>
-      <h3>Made from Raw Coders</h3>
-      <p>&copy; 2024 Raw Coders UCF Coding Bootcamp</p>
-    </footer>
-    <script src="./assets/script.js/actorInfo.js"></script>
-  </body>
+
+      
+      <div id="default-modal"  tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full text-center ">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-xl font-semibold text-gray-900 dark:text-white">
+            
+              <p id="boxOffice"></p>
+              <h2 id="movieTitle"></h2>
+              <p id="year"></p>
+              <p id="rated"></p>
+          </div>
+
+          <div class="flex justify-center">
+          <img id="moviePoster" src="" alt="Movie Poster">
+          </div>
+
+          <h2 id="actor" class="flex items-center justify-center text-5xl font-semibold text-gray-900 dark:text-white "></h2>
+
+
+          <p id="awards" class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-2xl font-semibold text-gray-900 dark:text-white"></p>
+          <p id="plot" class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-l font-semibold text-gray-900 dark:text-white"></p>
+          <p id="ratingName" class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-l font-semibold text-gray-900 dark:text-white"></p>
+          <p id="score" class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-l font-semibold text-gray-900 dark:text-white"></p>
+
+          </div>
+       </div>
+    </div>
+  </main>
+  
+  
+  <!-- footer -->
+  <footer>
+    <h3>Made from Raw Coders</h3>
+    <p>&copy; 2024 Raw Coders UCF Coding Bootcamp</p>
+  </footer>
+<script src="./assets/script.js/actorInfo.js"></script>
+ <script src="./assets/script.js/modal.js"></script>
+  <script src="./assets/scripts/movieList.js"></script>
+</body>
+
 </html>
 
