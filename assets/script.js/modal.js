@@ -1,5 +1,5 @@
-const actorID = 'nm0000158';
-const movieID = 'tt4154796';
+const actorID = 'nm0876138';
+const movieID = 'tt2953050';
 
 const actorUrl = `https://moviesminidatabase.p.rapidapi.com/actor/id/${actorID}/awards/`;
 const actorOptions = {
@@ -47,7 +47,7 @@ const displayMovieInModal = function(movieData, actorData) {
     modalActor.textContent = actorData.results[0].actor[0].name;
     modalAwards.textContent = actorData.results[0].award;
 
-    modal.style.display = 'hidden';
+    modal.style.display = 'block';
 };
 
 const openModal = function(){
@@ -66,11 +66,11 @@ const closeModal = function() {
 
 
 // Event listener for clicking outside the modal to close it
-// window.addEventListener('click', function(event) {
-//     if (event.target == modal) {
-//         closeModal();
-//     }
-// });
+window.addEventListener('click', function(event) {
+    if (event.target == modal) {
+        closeModal();
+    }
+});
 
 
 const getActorApi = function (movieData) {
