@@ -1,6 +1,3 @@
-let actorID = 'nm0000148';
-// let actorID;
-
 const actorOptions = {
   method: 'GET',
   headers: {
