@@ -124,6 +124,7 @@ const printMovie = function () {
         const movieCard = document.createElement('div');
         movieCard.setAttribute('class', 'flex flex-wrap items-center flex-col justify-start w-20%')
         movieCard.setAttribute('id', 'movieCard')
+        movieCard.setAttribute('data-movieId', actorData.actorMovies[i][0].imdb_id)
         const movieImageEl = document.createElement('img');
         const movieTitleEl = document.createElement('h4');
         movieTitleEl.setAttribute('class', 'text-wrap text-center')
@@ -139,7 +140,7 @@ const printMovie = function () {
         if(actorData.actorMovies[i][0].type == 'Winner'){
             movieAwardsEl.textContent = `Winner of "${actorData.actorMovies[i][0].award}"`
         } else if (actorData.actorMovies[i].type == 'Nominee'){
-            movieAwardsEl.textContent = `Moninated for "${actorData.actorMovies[i][0].award}"`
+            movieAwardsEl.textContent = `Noninated for "${actorData.actorMovies[i][0].award}"`
         } else{
             movieAwardsEl.textContent = ''
         }
