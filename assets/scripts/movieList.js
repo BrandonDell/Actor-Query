@@ -122,7 +122,7 @@ const getMovieYear = async function () {
 const printMovie = function () {
     for (i = 0; i < actorData.actorMovies.length; i++) {
         const movieCard = document.createElement('div');
-        movieCard.setAttribute('class', 'flex flex-wrap items-center flex-col justify-start w-')
+        movieCard.setAttribute('class', 'flex flex-wrap items-center flex-col justify-start w-20%')
         movieCard.setAttribute('id', 'movieCard')
         const movieImageEl = document.createElement('img');
         const movieTitleEl = document.createElement('h4');
@@ -133,7 +133,7 @@ const printMovie = function () {
 
         movieImageEl.setAttribute('src', actorData.actorMovies[i][0].Poster)
         movieImageEl.setAttribute('id', 'movieListPoster')
-        movieImageEl.setAttribute('class', 'w-2/5')
+        // movieImageEl.setAttribute('class', 'w-2/5')
         // movieImageEl.setAttribute('class', actorData.actorMovies[i][0].Posteroster)
         movieTitleEl.textContent = `${actorData.actorMovies[i][0].title}, ${actorData.actorMovies[i][0].Year}`
         if(actorData.actorMovies[i][0].type == 'Winner'){
