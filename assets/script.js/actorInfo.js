@@ -1,6 +1,3 @@
-// let actorID = 'nm0000148';
-let actorID;
-
 const actorOptions = {
   method: 'GET',
   headers: {
@@ -71,4 +68,8 @@ const printActorInfo = async (actorID) => {
   //  Insert the new content
   actorInfoSection.insertAdjacentHTML('beforeend', newChild);
 };
+
+// getActorMovieCount();
+// getActorAwardCount();
+// getActorBio();
 // printActorInfo()
