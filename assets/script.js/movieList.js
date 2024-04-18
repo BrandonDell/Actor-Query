@@ -122,7 +122,7 @@ const getMovieYear = async function () {
 const printMovie = function () {
     for (i = 0; i < actorData.actorMovies.length; i++) {
         const movieCard = document.createElement('div');
-        movieCard.setAttribute('class', 'flex flex-wrap items-center flex-col justify-start w-20%')
+        movieCard.setAttribute('class', 'flex flex-wrap items-center flex-col justify-start w-1/4')
         movieCard.setAttribute('id', 'movieCard')
         movieCard.setAttribute('data-movieId', actorData.actorMovies[i][0].imdb_id)
         const movieImageEl = document.createElement('img');
