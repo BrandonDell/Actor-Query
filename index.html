@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Actor Query</title>
-    <!-- <script src="http://cdn.tailwindcss.com"></script> -->
-    <link rel="stylesheet" href="./assets/style.css" />
-  </head>git
-  <body>
-    <main>
-      <aside>
-        <!-- form -->
-        <div id="actor-search">
-          <h2>Search Actor</h2>
-          <form id="search-form" class="form-input w-30">
-            <input
-              id="search-input"
-              class="form-input w-100"
-              type="text"
-              placeholder="Search"
-            />
-            <button type="submit" id="submt"></button>
-          </form>
-        </div>
-        <!-- favorites -->
-        <section id="favorites"></section>
-      </aside>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Actor Query</title>
+  <link rel="stylesheet" href="./assets/reset.css">
+  <link rel="stylesheet" href="./assets/style.css" />
+  <script src="http://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex flex-col">
+  <main class="flex">
+    <aside class="flex flex-col w-1/4">
+      <!-- form -->
+      <div id="actor-search" class="h-full">
+        <h2>Search Actor</h2>
+        <form id="search-form" class="form-input w-30">
+          <input id="search-input" class="form-input w-100" type="text" placeholder="Search" />
+          <button type="submit" id="submt"></button>
+        </form>
+      </div>
+      <!-- favorites -->
+      <section id="favorites"></section>
+    </aside>
+
+    <div id="rightSideMain" class="flex flex-col">
       <div id="actor-results">
         <!-- actor Info -->
-        <section id="actor-info"></section>
+       <section id="actor-info">p</section>
+      </div>
+      <!-- movie list -->
+      <div id="actor-movies">
+        <section id="movie-list" class="flex flex-wrap"></section>
+      </div>
+    </div>
+    <section id="actor-info"></section>
       </div>  
       <div id="actor-movies"></div>
         <!-- movie list -->
@@ -49,14 +55,17 @@
           <p id="score"></p>
        
     </div>
+  </main>
+  
+  
+  <!-- footer -->
+  <footer>
+    <h3>Made from Raw Coders</h3>
+    <p>&copy; 2024 Raw Coders UCF Coding Bootcamp</p>
+  </footer>
+ <script src="./assets/script.js/modal.js"></script>
+  <script src="./assets/scripts/movieList.js"></script>
+</body>
 
-    </main>
-    <!-- footer -->
-    <footer>
-      <h3>Made from Raw Coders</h3>
-      <p>&copy; 2024 Raw Coders UCF Coding Bootcamp</p>
-    </footer>
-    <script src="./assets/script.js/modal.js"></script>
-    <script src="./assets/scripts/movieList.js"></script>
-  </body>
 </html>
+
