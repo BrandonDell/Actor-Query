@@ -1,6 +1,6 @@
 const movieList = document.getElementById('movie-list')
-const actorString = 'harrison ford'
-let movieID = 'tt4154796'
+const userInput = document.getElementById('search-input')
+const formButton = document.getElementById('submt')
 let actorData = {
     actorId: {},
     actorAwards: {},
@@ -10,9 +10,28 @@ let movieData = {}
 // let movieYear;
 
 
+const formSubmitHandler = function (event) {
+    //prevent the page from refreshing after form submission
+    event.preventDefault();
+
+    //capitalize the city collected form the form input
+    const actorString = userInput.value.trim()
+
+    //city value isn't empty, aka if city variable has a value
+    if (actorString) {
+        //call weather search function and pass it the city name
+        fetchActorId(actorString);
+
+        // clears search bar
+        userInput.value = '';
+    //if city vairable is empty send an alert to the user to complete the form   
+    } else {
+        alert('Please enter an actor.');
+    }
+};
 
 
-const actorOptions = {
+const actorFetchOptions = {
     method: 'GET',
     headers: {
         'X-RapidAPI-Key': 'c58060c3f1mshc051cb3c128920bp1e185ejsn099f1601ded4',
@@ -20,15 +39,15 @@ const actorOptions = {
     }
 };
 
-const fetchActorId = function () {
+const fetchActorId = function (actorString) {
     const actorIDUrl = `https://moviesminidatabase.p.rapidapi.com/actor/imdb_id_byName/${actorString}/`;
-    fetch(actorIDUrl, actorOptions)
+    fetch(actorIDUrl, actorFetchOptions)
         .then(function (response) {
             if (response.ok) {
                 response.json()
                     .then(function (data) {
                         actorData.actorId = data.results[0].imdb_id
-                        fetchActorAwards(data.results[0].imdb_id)
+                        fetchActorAwards(actorData.actorId)
                     });
             }
         })
@@ -36,7 +55,7 @@ const fetchActorId = function () {
 
 const fetchActorAwards = function (actorId) {
     const actorAwardsUrl = `https://moviesminidatabase.p.rapidapi.com/actor/id/${actorId}/awards/`;
-    fetch(actorAwardsUrl, actorOptions)
+    fetch(actorAwardsUrl, actorFetchOptions)
         .then(function (response) {
             if (response.ok) {
                 response.json()
@@ -48,9 +67,9 @@ const fetchActorAwards = function (actorId) {
         })
 }
 
-const fetchActorMovies = function () {
-    const actorMoviesUrl = 'https://moviesminidatabase.p.rapidapi.com/movie/byActor/nm0000148/';
-    fetch(actorMoviesUrl, actorOptions)
+const fetchActorMovies = function (actorId) {
+    const actorMoviesUrl = `https://moviesminidatabase.p.rapidapi.com/movie/byActor/${actorId}/`;
+    fetch(actorMoviesUrl, actorFetchOptions)
         .then(function (response) {
             if (response.ok) {
                 response.json()
@@ -76,7 +95,7 @@ const assignAwardsToMovies = function (){
 }
 
 
-const movieOptions = {
+const movieFetchOptions = {
     method: 'GET',
     headers: {
         'X-RapidAPI-Key': 'c58060c3f1mshc051cb3c128920bp1e185ejsn099f1601ded4',
@@ -87,7 +106,7 @@ const movieOptions = {
 const getMovieYear = async function () {
     for (i = 0; i < actorData.actorMovies.length; i++) {
         const movieUrl = `https://movie-database-alternative.p.rapidapi.com/?r=json&i=${actorData.actorMovies[i][0].imdb_id}`
-        const response = await fetch(movieUrl, movieOptions)
+        const response = await fetch(movieUrl, movieFetchOptions)
         if (response.ok) {
             const data = await response.json()
             actorData.actorMovies[i][0].Year = data.Year
@@ -132,7 +151,7 @@ const printMovie = function () {
     }
 }
 
-fetchActorId()
+formButton.addEventListener('click', formSubmitHandler)
 
 
 
