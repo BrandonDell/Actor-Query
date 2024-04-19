@@ -124,13 +124,15 @@ const printMovie = function () {
         const movieCard = document.createElement('div');
         movieCard.setAttribute('class', 'flex flex-wrap items-center flex-col justify-start w-20%')
         movieCard.setAttribute('id', 'movieCard')
-        movieCard.setAttribute('data-movieId', actorData.actorMovies[i][0].imdb_id)
         const movieImageEl = document.createElement('img');
+        movieImageEl.setAttribute('data-movieId', actorData.actorMovies[i][0].imdb_id)
         const movieTitleEl = document.createElement('h4');
         movieTitleEl.setAttribute('class', 'text-wrap text-center')
+        movieImageEl.setAttribute('data-actorId', actorData.actorId)
         // const movieYearEl = document.createElement('h4');
         const movieAwardsEl = document.createElement('h5');
         movieAwardsEl.setAttribute('class', 'text-wrap text-center')
+        movieImageEl.setAttribute('data-awardId', actorData.actorMovies[i][0].award)
 
         movieImageEl.setAttribute('src', actorData.actorMovies[i][0].Poster)
         movieImageEl.setAttribute('id', 'movieListPoster')
@@ -153,6 +155,5 @@ const printMovie = function () {
 }
 
 formButton.addEventListener('click', formSubmitHandler)
-
 
 

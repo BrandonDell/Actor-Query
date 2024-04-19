@@ -1,8 +1,8 @@
-const actorID = 'nm0876138';
-const movieID = 'tt2953050';
+let actorModalID = '';
+// let movieModalID = '';
 
-const actorUrl = `https://moviesminidatabase.p.rapidapi.com/actor/id/${actorID}/awards/`;
-const actorOptions = {
+
+const actorModalOptions = {
     method: 'GET',
     headers: {
         'X-RapidAPI-Key': 'c58060c3f1mshc051cb3c128920bp1e185ejsn099f1601ded4',
@@ -10,8 +10,8 @@ const actorOptions = {
     }
 };
 
-const movieUrl = `https://movie-database-alternative.p.rapidapi.com/?r=json&i=${movieID}`;
-const movieOptions = {
+
+const movieModalOptions = {
     method: 'GET',
     headers: {
         'X-RapidAPI-Key': 'c58060c3f1mshc051cb3c128920bp1e185ejsn099f1601ded4',
@@ -47,41 +47,54 @@ const displayMovieInModal = function(movieData, actorData) {
     modalActor.textContent = actorData.results[0].actor[0].name;
     modalAwards.textContent = actorData.results[0].award;
 
-    modal.style.display = 'block';
+    // modal.style.display = 'none';
 };
 
-const openModal = function(){
-    modal.style.display = 'block';
-};
+const modalListener = function(event){
+    console.log("clicking card");
+    //if(event.target.matches('#movieCard')){
+    const movieData = event.target.dataset.movieid;
+    const actorIdData = event.target.dataset.actorId;
+    const awardActorData = event.target.dataset.awardId;
+    console.log("clicking card",  movieData);
+        if (movieData) {
+            movieModalID = movieData
+            actorModalID = actorIdData
+            awardModalID = awardActorData
+           
+            modalClicked(movieModalID,awardModalID,actorModalID);
+    
+            
+        } ;
+//};
+}
 
-window.addEventListener('click', function(event){
-    if(event.target == modal) {
-        openModal();
-    }
-})
 // Function to close the modal
 const closeModal = function() {
     modal.style.display = 'none';
 };
 
-
 // Event listener for clicking outside the modal to close it
 window.addEventListener('click', function(event) {
     if (event.target == modal) {
+        console.log('close modal')
         closeModal();
     }
 });
 
-
+// Fetch actor data and display in modal
 const getActorApi = function (movieData) {
-    fetch(actorUrl, actorOptions)
+    const actorModalUrl = `https://moviesminidatabase.p.rapidapi.com/actor/id/${actorModalID}/awards/`;
+    console.log(movieData)
+        fetch(actorUrl, actorModalOptions)
         .then(function (response) {
+            console
             if (response.ok) {
                 return response.json();
             }
+            throw new Error('Network response was not ok.');
         })
         .then(function (actorData) {
-            console.log(actorData);
             displayMovieInModal(movieData, actorData);
         })
         .catch(function (error) {
@@ -89,28 +102,36 @@ const getActorApi = function (movieData) {
         });
 }; 
 
-const getMovieApi = function () {
-    fetch(movieUrl, movieOptions)
+// Fetch movie data and then fetch actor data
+const getMovieApi = function (movieModalID) {
+    const movieModalUrl = `https://movie-database-alternative.p.rapidapi.com/?r=json&i=${movieModalID}`;
+    console.log(movieModalUrl);
+    fetch(movieModalUrl, movieModalOptions)
         .then(function (response) {
             if (response.ok) {
                 return response.json();
             }
+            throw new Error('Network response was not ok.');
         })
         .then(function (data) {
-            // Display movie data in modal
-            // displayMovieInModal(data);
             getActorApi(data);
+            modal.style.display = 'block';
         })
         .catch(function (error) {
             console.error('Error:', error);
         });
 };
 
-
-
-const modalClicked = function () {
-    // Fetching data separately for movie and actor
-    getMovieApi();
+// Function to be called when the modal is clicked
+const modalClicked = function (movieModalID) {
+    console.log("modalClicked");
+    getMovieApi(movieModalID);
 };
 
-getMovieApi();
+const modalPopup = document.getElementById('movie-list'); 
+console.log("modal button", modalPopup);
+    modalPopup.addEventListener('click', modalListener);
+ 
+
+
+
