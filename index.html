@@ -12,7 +12,7 @@
 
 <body class="flex flex-col">
   <main class="flex">
-    <aside class="flex flex-col w-1/4">
+    <aside class="flex flex-col max-w-80">
       <!-- form -->
       <div id="actor-search" class="h-full">
         <h2>Search Actor</h2>
@@ -22,12 +22,12 @@
         </form>
       </div>
       <!-- favorites -->
-      <section id="favorites"></section>
+      <section id="favorites" class="flex flex-col relative justify-center p-10 md:p-12 space-y-6 border-8 rounded-t dark:border-gray-600 text-2xl font-semibold text-gray-900 dark:text-white"></section>
     </aside>
 
-      <div id="actor-results">
+      <div id="actor-results flex min-w-fit">
         <!-- actor Info -->
-       <section id="actor-info">p</section>
+       <section id="actor-info" class="flex flex-wrap justify-center p-12 md:p-20 border-b rounded-t dark:border-gray-600 text-center text-2xl font-semibold text-gray-900 dark:text-white"></section>
       </div>
       <!-- movie list -->
       <div id="actor-movies">
@@ -72,15 +72,16 @@
   
   
   <!-- footer -->
-  <footer>
+  <footer class="flex text-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-2xl font-semibold text-gray-900 dark:text-white">
     <h3>Made from Raw Coders</h3>
     <p>&copy; 2024 Raw Coders UCF Coding Bootcamp</p>
   </footer>
-  <script src="./assets/script.js/mainApi.js"></script>
-<script src="./assets/script.js/favorities.js" ></script>
+  
+<!-- <script src="./assets/script.js/mainApi.js"></script> -->
 <script src="./assets/script.js/actorInfo.js"></script>
- <script src="./assets/script.js/modal.js"></script>
-  <script src="./assets/script.js/movieList.js"></script>
+<script src="./assets/script.js/favorities.js" ></script>
+ <!-- <script src="./assets/script.js/modal.js"></script>
+  <script src="./assets/script.js/movieList.js"></script> -->
 </body>
 
 </html>

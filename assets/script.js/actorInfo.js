@@ -32,7 +32,7 @@ async function saveActorHandler(event) {
 
   return false;
 }
-const form = document.getElementById('search');
+const form = document.getElementById('search-form');
 form.addEventListener('submit', saveActorHandler);
 
 const getActorIdByName = async function (actorString) {
