@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="./assets/style.css" />
   <script src="http://cdn.tailwindcss.com"></script>
 </head>
-
 <body class="flex flex-col h-full">
   <header class="flex items-baseline justify-between w-full text-5xl bg-green-300 h-16">
     <h1 class="mx-10 text-center">Actor-Query</h1>
@@ -26,12 +25,13 @@
         </form>
       </div>
       <!-- favorites -->
-      <section id="favorites"></section>
+      <section id="favorites" class="flex flex-col relative justify-center p-10 md:p-12 space-y-6 border-8 rounded-t dark:border-gray-600 text-2xl font-semibold text-gray-900 dark:text-white"></section>
     </aside>
     <div class="w-3/4">
       <div id="actor-results">
         <!-- actor Info -->
         <section id="actor-info">p</section>
+
       </div>
       <!-- movie list -->
       <div id="actor-movies">
@@ -82,7 +82,7 @@
 
 
   <!-- footer -->
-  <footer>
+  <footer class="flex text-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-2xl font-semibold text-gray-900 dark:text-white">
     <h3>Made from Raw Coders</h3>
     <p>&copy; 2024 Raw Coders UCF Coding Bootcamp</p>
   </footer>
@@ -91,6 +91,7 @@
   <script src="./assets/script.js/actorInfo.js"></script>
   <script src="./assets/script.js/modal.js"></script>
   <script src="./assets/script.js/movieList.js"></script>
+
 </body>
 
 </html>

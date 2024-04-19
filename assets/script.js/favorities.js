@@ -1,22 +1,28 @@
-// function to save API search in localStorage
-const saveHistory = async function (actorID, actorName) {
-  console.log('In this function:', actorName);
+const saveHistory = async function (actor) {
+  console.log('In this function:', actor);
   let apiSearchHistory = JSON.parse(localStorage.getItem('apiSearchHistory')) || [];
-  apiSearchHistory.push({ id: actorID, name: actorName });
+  apiSearchHistory.push(actor);
     localStorage.setItem('apiSearchHistory', JSON.stringify(apiSearchHistory));
-    await showHistory();
+    showHistory();
 }
 // function to show history
 const showHistory = async function () {
     let apiSearchHistory = JSON.parse(localStorage.getItem('apiSearchHistory')) || [];
     console.log('In the function show history == ', apiSearchHistory);
-    console.log(apiSearchHistory[0]);
-    const historySection = document.getElementById('history');
-    // creat element
-    let cityEl = document.createElement('button');
-    // git content to element
-    cityEl.textContent = apiSearchHistory[0];
-    // add to the history section
-    historySection.appendChild(cityEl);
+    const actorInfoSection = document.getElementById('favorites');
+  //   Empty the contents of actor-info
+  actorInfoSection.innerHTML = '';
+  
+  
+  for(let i = 0; i < apiSearchHistory.length; i++) {
+    let obj = apiSearchHistory[i];
+    let title = document.createElement("button");
+    title.classList.add("btn")
+    title.classList.add("btn-blue")
+    title.textContent = obj.name
+    console.log(obj);
+    console.log(title);
+    actorInfoSection.appendChild(title)
+  }
 }
-
+showHistory();
