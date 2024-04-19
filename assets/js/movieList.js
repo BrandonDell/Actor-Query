@@ -13,6 +13,7 @@ let movieData = {}
 const formSubmitHandler = function (event) {
     //prevent the page from refreshing after form submission
     event.preventDefault();
+    movieList.innerHTML = ''
 
     //capitalize the city collected form the form input
     const actorString = userInput.value.trim()
