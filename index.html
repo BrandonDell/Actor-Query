@@ -9,10 +9,13 @@
   <link rel="stylesheet" href="./assets/style.css" />
   <script src="http://cdn.tailwindcss.com"></script>
 </head>
-
-<body class="flex flex-col">
-  <main class="flex">
-    <aside class="flex flex-col max-w-80">
+<body class="flex flex-col h-full">
+  <header class="flex items-baseline justify-between w-full text-5xl bg-green-300 h-16">
+    <h1 class="mx-10 text-center">Actor-Query</h1>
+    <img src="./assets/images/header-img.png" alt="yellow trophy red background" class="size-8 mx-10">
+  </header>
+  <main class="flex h-full">
+    <aside class="flex flex-col w-1/4 h-max">
       <!-- form -->
       <div id="actor-search" class="h-full">
         <h2>Search Actor</h2>
@@ -24,65 +27,71 @@
       <!-- favorites -->
       <section id="favorites" class="flex flex-col relative justify-center p-10 md:p-12 space-y-6 border-8 rounded-t dark:border-gray-600 text-2xl font-semibold text-gray-900 dark:text-white"></section>
     </aside>
-
-      <div id="actor-results flex min-w-fit">
+    <div class="w-3/4">
+      <div id="actor-results">
         <!-- actor Info -->
-       <section id="actor-info" class="flex flex-wrap justify-center p-12 md:p-20 border-b rounded-t dark:border-gray-600 text-center text-2xl font-semibold text-gray-900 dark:text-white"></section>
+        <section id="actor-info">p</section>
+
       </div>
       <!-- movie list -->
       <div id="actor-movies">
         <section id="movie-list" class="flex flex-wrap"></section>
       </div>
     </div>
-    <section id="actor-info"></section>
-      </div>  
-      <div id="actor-movies"></div>
-        <!-- movie list -->
-        <section id="movie-list"></section>
-      </div>
-
-      
-      <div id="default-modal"  tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full text-center ">
-        <div class="relative p-4 w-full max-w-2xl max-h-full">
-          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-xl font-semibold text-gray-900 dark:text-white">
-            
-              <p id="boxOffice"></p>
-              <h2 id="movieTitle"></h2>
-              <p id="year"></p>
-              <p id="rated"></p>
-          </div>
-
-          <div class="flex justify-center">
-          <img id="moviePoster" src="" alt="Movie Poster">
-          </div>
-
-          <h2 id="actor" class="flex items-center justify-center text-5xl font-semibold text-gray-900 dark:text-white "></h2>
-
-
-          <p id="awards" class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-2xl font-semibold text-gray-900 dark:text-white"></p>
-          <p id="plot" class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-l font-semibold text-gray-900 dark:text-white"></p>
-          <p id="ratingName" class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-l font-semibold text-gray-900 dark:text-white"></p>
-          <p id="score" class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-l font-semibold text-gray-900 dark:text-white"></p>
-
-          </div>
-       </div>
-    </div>
   </main>
-  
-  
+
+
+  <div id="default-modal" tabindex="-1"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full text-center ">
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <div
+          class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-xl font-semibold text-gray-900 dark:text-white">
+
+          <p id="boxOffice"></p>
+          <h2 id="movieTitle"></h2>
+          <p id="year"></p>
+          <p id="rated"></p>
+        </div>
+
+        <div class="flex justify-center">
+          <img id="moviePoster" src="" alt="Movie Poster">
+        </div>
+
+        <h2 id="actor" class="flex items-center justify-center text-5xl font-semibold text-gray-900 dark:text-white ">
+        </h2>
+
+
+        <p id="awards"
+          class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-2xl font-semibold text-gray-900 dark:text-white">
+        </p>
+        <p id="plot"
+          class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-l font-semibold text-gray-900 dark:text-white">
+        </p>
+        <p id="ratingName"
+          class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-l font-semibold text-gray-900 dark:text-white">
+        </p>
+        <p id="score"
+          class="flex items-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-l font-semibold text-gray-900 dark:text-white">
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+
+
   <!-- footer -->
   <footer class="flex text-center justify-center p-4 md:p-5 border-b rounded-t dark:border-gray-600 text-2xl font-semibold text-gray-900 dark:text-white">
     <h3>Made from Raw Coders</h3>
     <p>&copy; 2024 Raw Coders UCF Coding Bootcamp</p>
   </footer>
-  
-<!-- <script src="./assets/script.js/mainApi.js"></script> -->
-<script src="./assets/script.js/actorInfo.js"></script>
-<script src="./assets/script.js/favorities.js" ></script>
- <!-- <script src="./assets/script.js/modal.js"></script>
-  <script src="./assets/script.js/movieList.js"></script> -->
+  <script src="./assets/script.js/mainApi.js"></script>
+  <script src="./assets/script.js/favorities.js"></script>
+  <script src="./assets/script.js/actorInfo.js"></script>
+  <script src="./assets/script.js/modal.js"></script>
+  <script src="./assets/script.js/movieList.js"></script>
+
 </body>
 
 </html>
-
