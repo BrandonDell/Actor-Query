@@ -1,4 +1,4 @@
-const actorOptions = {
+const actorInfoOptions = {
   method: 'GET',
   headers: {
     'X-RapidAPI-Key': 'c58060c3f1mshc051cb3c128920bp1e185ejsn099f1601ded4',
@@ -6,8 +6,8 @@ const actorOptions = {
   },
 };
 // get movie count
-const getActorMovieCount = async function (actorID) {
-  const movieUrl = `https://moviesminidatabase.p.rapidapi.com/movie/byActor/${actorID}/`;
+const getActorMovieCount = async function (actorInfoID) {
+  const movieUrl = `https://moviesminidatabase.p.rapidapi.com/movie/byActor/${actorInfoID}/`;
   const response = await fetch(movieUrl, actorOptions);
   if (response.ok) {
     const data = await response.json();
@@ -16,9 +16,9 @@ const getActorMovieCount = async function (actorID) {
 };
 
 // get awards count
-const getActorAwardCount = async function (actorID) {
-  const awardsUrl = `https://moviesminidatabase.p.rapidapi.com/actor/id/${actorID}/awards/`;
-  const response = await fetch(awardsUrl, actorOptions);
+const getActorAwardCount = async function (actorInfoID) {
+  const awardsUrl = `https://moviesminidatabase.p.rapidapi.com/actor/id/${actorInfoID}/awards/`;
+  const response = await fetch(awardsUrl, actorInfoOptions);
   if (response.ok) {
     const data = await response.json();
     return data.count;
@@ -27,12 +27,12 @@ const getActorAwardCount = async function (actorID) {
 
 // get actor bio
 // the URL is constructed using template literal string and makes a asynchronous HTTP request using the fetch function
-const getActorBio = async function (actorID) {
+const getActorBio = async function (actorInfoID) {
   //   Contructs the URL using the API endpoints
-  const actorUrl = `https://moviesminidatabase.p.rapidapi.com/actor/id/${actorID}/bio/`;
+  const actorUrl = `https://moviesminidatabase.p.rapidapi.com/actor/id/${actorInfoID}/bio/`;
   
     // response handling if the API is successful it reads a response body as JSON using response.json (asynchronos operation), so it awaits the JSON parsing
-  const response = await fetch(actorUrl, actorOptions);
+  const response = await fetch(actorUrl, actorInfoOptions);
   if (response.ok) {
     const data = await response.json();
     
@@ -40,16 +40,16 @@ const getActorBio = async function (actorID) {
     return data.results.actor.name;
   }
 };
-// asynchronous function that retrieves and prints info by using actorID as the unique identifier
+// asynchronous function that retrieves and prints info by using actorInfoID as the unique identifier
 // 
-const printActorInfo = async (actorID) => {
-  const actorName = await getActorBio(actorID);
+const printActorInfo = async (actorInfoID) => {
+  const actorName = await getActorBio(actorInfoID);
   console.log('print', actorName);
 
-  const movieAward = await getActorAwardCount(actorID);
+  const movieAward = await getActorAwardCount(actorInfoID);
   console.log('print', movieAward);
 
-  const movieCount = await getActorMovieCount(actorID);
+  const movieCount = await getActorMovieCount(actorInfoID);
   console.log('print', movieCount);
 
   // Get the section element
@@ -69,7 +69,7 @@ const printActorInfo = async (actorID) => {
   actorInfoSection.insertAdjacentHTML('beforeend', newChild);
 };
 
-// getActorMovieCount();
-// getActorAwardCount();
-// getActorBio();
-// printActorInfo()
+getActorMovieCount();
+getActorAwardCount();
+getActorBio();
+printActorInfo()
